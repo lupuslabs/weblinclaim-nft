@@ -1,4 +1,4 @@
-## OpenSea Creatures - Starter ERC721, ERC1155, and factory contracts
+## OpenSea WeblinClaimes - Starter ERC721, ERC1155, and factory contracts
 
 What's included:
 
@@ -45,7 +45,7 @@ sudo npm explore npm -g -- npm install node-gyp@latest # Update node-gyp
 ```
 export ALCHEMY_KEY="<your_alchemy_project_id>"
 export MNEMONIC="<metmask_mnemonic>"
-DEPLOY_CREATURES_SALE=1 yarn truffle deploy --network rinkeby
+DEPLOY_WeblinClaimES_SALE=1 yarn truffle deploy --network rinkeby
 ```
 
 ### Minting tokens.
@@ -77,7 +77,7 @@ If you're running a modified version of `sell.js` and not getting expected behav
 
 - Are you running a version of node compliant with the `engines` requirement in `package.json`? If no, try `nvm use; rm -rf node_modules; yarn`
 
-# About OpenSea Creature Accessories
+# About OpenSea WeblinClaime Accessories
 
 This is a sample ERC-1155 contract for the purposes of demonstrating integration with the [OpenSea](https://opensea.io) marketplace for crypto collectibles. We also include:
 
@@ -91,7 +91,7 @@ On top of the features from the OpenSea ERC721 sample contracts above, ERC1155
 
 ## Configuring the Lootbox
 
-Open CreatureAccessoryLootbox.sol
+Open WeblinClaimeAccessoryLootbox.sol
 
 1. Change `Class` to reflect your rarity levels.
 2. Change `NUM_CLASSES` to reflect how many classes you have (this gets used for sizing fixed-length arrays in Solidity)

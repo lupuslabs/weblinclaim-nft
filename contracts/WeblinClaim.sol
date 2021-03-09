@@ -4,20 +4,20 @@ import "./ERC721Tradable.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 /**
- * @title Creature
- * Creature - a contract for my non-fungible creatures.
+ * @title WeblinClaim
+ * WeblinClaim - a contract for my non-fungible WeblinClaims.
  */
-contract Creature is ERC721Tradable {
+contract WeblinClaim is ERC721Tradable {
     constructor(address _proxyRegistryAddress)
         public
-        ERC721Tradable("Creature", "OSC", _proxyRegistryAddress)
+        ERC721Tradable("WeblinClaim", "CLAIM", _proxyRegistryAddress)
     {}
 
     function baseTokenURI() public pure returns (string memory) {
-        return "https://creatures-api.opensea.io/api/creature/";
+        return "https://webit.vulcan.weblin.com/Claim/";
     }
 
     function contractURI() public pure returns (string memory) {
-        return "https://creatures-api.opensea.io/contract/opensea-creatures";
+        return "https://webit.vulcan.weblin.com/Claim";
     }
 }

@@ -2,7 +2,6 @@ pragma solidity ^0.5.11;
 
 import "multi-token-standard/contracts/interfaces/IERC1155TokenReceiver.sol";
 
-import "../CreatureAccessoryFactory.sol";
 
 
 contract TestForReentrancyAttack is IERC1155TokenReceiver {
@@ -25,37 +24,8 @@ contract TestForReentrancyAttack is IERC1155TokenReceiver {
         totalToMint = 3;
     }
 
-    /*function attack(uint256 _totalToMint) external {
-        require(_totalToMint >= 2, "_totalToMint must be >= 2");
-        totalToMint = _totalToMint;
-        CreatureAccessoryFactory(factoryAddress).mint(1, address(this), 1, "");
-        }*/
 
-    // We attempt a reentrancy attack here by recursively calling the
-    // CreatureAccessoryFactory that created the CreatureAccessory ERC1155 token
-    // that we are receiving here.
-    // We expect this to fail if the CreatureAccessoryFactory.mint() function
-    // defends against reentrancy.
 
-    function onERC1155Received(
-        address /*_operator*/,
-        address /*_from*/,
-        uint256 _id,
-        uint256 /*_amount*/,
-        bytes calldata /*_data*/
-    )
-        external
-        returns(bytes4)
-    {
-        uint256 balance = IERC1155(msg.sender).balanceOf(address(this), _id);
-        if(balance < totalToMint)
-        {
-            // 1 is the factory lootbox option, not the token id
-            CreatureAccessoryFactory(factoryAddress)
-                .mint(1, address(this), 1, "");
-        }
-        return ERC1155_RECEIVED_SIG;
-    }
 
     function supportsInterface(bytes4 interfaceID)
         external
@@ -66,11 +36,5 @@ contract TestForReentrancyAttack is IERC1155TokenReceiver {
             interfaceID == INTERFACE_ERC1155_RECEIVER_FULL;
     }
 
-    // We don't use this but we need it for the interface
 
-    function onERC1155BatchReceived(address /*_operator*/, address /*_from*/, uint256[] memory /*_ids*/, uint256[] memory /*_values*/, bytes memory /*_data*/)
-        public returns(bytes4)
-    {
-        return ERC1155_BATCH_RECEIVED_SIG;
-    }
 }

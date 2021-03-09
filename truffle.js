@@ -1,8 +1,8 @@
 const HDWalletProvider = require("truffle-hdwallet-provider");
 
 const MNEMONIC = process.env.MNEMONIC;
-const NODE_API_KEY = process.env.INFURA_KEY || process.env.ALCHEMY_KEY;
-const isInfura = !!process.env.INFURA_KEY;
+const NODE_API_KEY = process.env.ALCHEMY_KEY;
+const isInfura = false;
 
 const needsNodeAPI =
   process.env.npm_config_argv &&
