@@ -4,8 +4,6 @@ const config = require('./config.' + network + '.js');
 const web3 = require("web3");
 var readlineSync = require('readline-sync');
 
-const mintTo = '0xBFe63Cc83FE538DCa77c613A4dFAd126a5b052Df';  // config.ownerAddress
-
 if (config.mnemonic == null) {
     config.mnemonic = readlineSync.question('May I have your mnemonic? ');
 }
@@ -23,20 +21,24 @@ const nftContract = new web3Instance.eth.Contract(
     {gasLimit: "1000000"}
 );
 
-
-
 (async () => {
 
-    let result = await nftContract.methods
-        .mintTo(mintTo)
+    let result;
+    /*
+    result = await nftContract.methods
+        .setBaseURI('https://example.com/')
         .send({ from: config.ownerAddress });
-    console.log("Minted claim. Transaction: ", result.transactionHash);//*/
+    console.log("R=", result);//*/
+
+    /*result = await nftContract.methods
+        .baseURI()
+        .call();
+    console.log("R=", result);//*/
 
     result = await nftContract.methods
-        .totalSupply()
+        .balanceOf('0xDA54196121247511797cEcF378A78a6052992586')
         .call();
-    console.log("totalSupply = ", result);
+    console.log("R=", result);//*/
 
     process.exit();
 })();
-
