@@ -19,12 +19,15 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
     address proxyRegistryAddress;
     uint256 private _currentTokenId = 0;
+    string public baseURI;
 
     constructor(
         string memory _name,
         string memory _symbol,
-        address _proxyRegistryAddress
+        address _proxyRegistryAddress,
+        string memory _baseURI
     ) public ERC721Full(_name, _symbol) {
+        setBaseURI(_baseURI);
         proxyRegistryAddress = _proxyRegistryAddress;
     }
 
@@ -53,8 +56,12 @@ contract ERC721Tradable is ERC721Full, Ownable {
         _currentTokenId++;
     }
 
-    function baseTokenURI() public pure returns (string memory) {
-        return "";
+    function baseTokenURI() public view returns (string memory) {
+        return baseURI;
+    }
+
+    function setBaseURI(string memory uri) public onlyOwner {
+        baseURI = uri;
     }
 
     function tokenURI(uint256 _tokenId) external view returns (string memory) {
