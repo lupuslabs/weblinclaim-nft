@@ -1,7 +1,7 @@
 module.exports = {
     contractAddress: '',
-    ownerAddress: '0x2410d968fbbe5a7aad975B5244Ea9812C5e5C141',
-    providerUrl: 'https://eth-rinkeby.alchemyapi.io/v2/r2gUsunv9dqoULzKRpZsIwo2MgOIYkO9',
+    ownerAddress: '0xBFe63Cc83FE538DCa77c613A4dFAd126a5b052Df',
+    providerUrl: 'https://eth-mainnet.alchemyapi.io/v2/0_7o5JNttyfeUapKv8oI58Nslg5cwkDh',
     mnemonic: null,
     abi: [
         {

@@ -29,7 +29,7 @@ module.exports = {
                 return new HDWalletProvider(configLive.mnemonic, configLive.providerUrl);
             },
             gas: 3500000,
-            gasPrice: 50e9,
+            gasPrice: 60e9,
         },
     },
     mocha: {
