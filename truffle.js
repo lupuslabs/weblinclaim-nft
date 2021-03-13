@@ -1,6 +1,11 @@
 const HDWalletProvider = require("truffle-hdwallet-provider");
 const configRinkeby = require("./scripts/config.rinkeby.js");
 const configLive = require("./scripts/config.live.js");
+var readlineSync = require('readline-sync');
+
+if (process.argv[3]=='--network=live') {
+    configLive.mnemonic = readlineSync.question('May I have your mnemonic? ');
+}
 
 module.exports = {
     networks: {
