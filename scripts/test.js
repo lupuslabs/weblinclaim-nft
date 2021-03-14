@@ -1,28 +1,8 @@
-const HDWalletProvider = require("truffle-hdwallet-provider");
-const network = process.argv[2] ?? 'rinkeby';
-const config = require('./config.' + network + '.js');
-const web3 = require("web3");
-var readlineSync = require('readline-sync');
-const abi = require('../build/contracts/WeblinItem.json').abi;
-
-if (config.mnemonic == null) {
-    config.mnemonic = readlineSync.question('May I have your mnemonic? ');
-}
-let provider;
-try {
-    provider = new HDWalletProvider(config.mnemonic, config.providerUrl);
-} catch (e) {
-    console.log(e.message);
-    process.exit();
-}
-const web3Instance = new web3(provider);
-const nftContract = new web3Instance.eth.Contract(
-    abi,
-    config.contractAddress,
-    {gasLimit: "1000000"}
-);
+const {config, contract, abi} = require('./ContractWalletProvider.js');
 
 (async () => {
+    printAbi(abi);
+
 
     let result;
     /*
@@ -42,15 +22,31 @@ const nftContract = new web3Instance.eth.Contract(
         .send( {from: config.ownerAddress} );
     console.log("R=", result);//*/
 
-    result = await nftContract.methods
+    result = await contract.methods
         .properties(138)
         .call( {from: config.ownerAddress} );
     console.log("R=", result);//*/
 
-    result = await nftContract.methods
+    result = await contract.methods
         .tokenURI(config.ownerAddress)
         .call( {from: config.ownerAddress} );
     console.log("R=", result);//*/
 
     process.exit();
 })();
+
+
+function printAbi(abi) {
+    for (n in abi) {
+        let inp = [];
+        let outp = [];
+        for (o in abi[n].inputs) {
+            inp.push(abi[n].inputs[o].type + ' ' + abi[n].inputs[o].name);
+        }
+        for (o in abi[n].outputs) {
+            outp.push(abi[n].outputs[o].type + ' ' + abi[n].outputs[o].name);
+        }
+        let sig = abi[n].type + ' ' + abi[n].name + '(' + inp.join(', ') + '): ' + outp.join(', ');
+        console.log(sig);
+    }
+}
