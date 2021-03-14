@@ -10,6 +10,7 @@ contract ProxyRegistry {
     mapping(address => OwnableDelegateProxy) public proxies;
 }
 
+
 /**
  * @title ERC721Tradable
  * ERC721Tradable - ERC721 contract that whitelists a trading address, and has minting functionality.
@@ -18,8 +19,9 @@ contract ERC721Tradable is ERC721Full, Ownable {
     using Strings for string;
 
     address proxyRegistryAddress;
-    uint256 private _currentTokenId = 0;
     string public baseURI;
+
+    mapping (uint256 => string) private _properties;
 
     constructor(
         string memory _name,
@@ -33,27 +35,15 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
     /**
      * @dev Mints a token to an address with a tokenURI.
-     * @param _to address of the future owner of the token
+     * @param to address of the future owner of the token
      */
-    function mintTo(address _to) public onlyOwner {
-        uint256 newTokenId = _getNextTokenId();
-        _mint(_to, newTokenId);
-        _incrementTokenId();
+    function mint(address to, uint256 tokenId, string memory properties) public onlyOwner {
+        _mint(to, tokenId);
+        _properties[tokenId] = properties;
     }
 
-    /**
-     * @dev calculates the next token ID based on value of _currentTokenId
-     * @return uint256 for the next token ID
-     */
-    function _getNextTokenId() private view returns (uint256) {
-        return _currentTokenId.add(1);
-    }
-
-    /**
-     * @dev increments the value of _currentTokenId
-     */
-    function _incrementTokenId() private {
-        _currentTokenId++;
+    function properties(uint256 tokenId) public view returns (string memory) {
+        return _properties[tokenId];
     }
 
     function baseTokenURI() public view returns (string memory) {
@@ -64,8 +54,8 @@ contract ERC721Tradable is ERC721Full, Ownable {
         baseURI = uri;
     }
 
-    function tokenURI(uint256 _tokenId) external view returns (string memory) {
-        return Strings.strConcat(baseTokenURI(), Strings.uint2str(_tokenId));
+    function tokenURI(uint256 tokenId) external view returns (string memory) {
+        return Strings.strConcat(baseTokenURI(), Strings.uint2str(tokenId), properties(tokenId));
     }
 
     /**
