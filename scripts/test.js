@@ -3,6 +3,7 @@ const network = process.argv[2] ?? 'rinkeby';
 const config = require('./config.' + network + '.js');
 const web3 = require("web3");
 var readlineSync = require('readline-sync');
+const abi = require('../build/contracts/WeblinItem.json').abi;
 
 if (config.mnemonic == null) {
     config.mnemonic = readlineSync.question('May I have your mnemonic? ');
@@ -16,7 +17,7 @@ try {
 }
 const web3Instance = new web3(provider);
 const nftContract = new web3Instance.eth.Contract(
-    config.abi,
+    abi,
     config.contractAddress,
     {gasLimit: "1000000"}
 );
@@ -35,9 +36,20 @@ const nftContract = new web3Instance.eth.Contract(
         .call();
     console.log("R=", result);//*/
 
+
+   /* result = await nftContract.methods
+        .mint(config.ownerAddress, 1338, "?foo=bar")
+        .send( {from: config.ownerAddress} );
+    console.log("R=", result);//*/
+
     result = await nftContract.methods
-        .balanceOf('0xDA54196121247511797cEcF378A78a6052992586')
-        .call();
+        .properties(138)
+        .call( {from: config.ownerAddress} );
+    console.log("R=", result);//*/
+
+    result = await nftContract.methods
+        .tokenURI(config.ownerAddress)
+        .call( {from: config.ownerAddress} );
     console.log("R=", result);//*/
 
     process.exit();

@@ -3,6 +3,8 @@ const network = process.argv[2] ?? 'rinkeby';
 const config = require('./config.' + network + '.js');
 const web3 = require("web3");
 var readlineSync = require('readline-sync');
+const abi = require('../build/contracts/WeblinItem.json').abi;
+
 
 const mintTo = '0xBFe63Cc83FE538DCa77c613A4dFAd126a5b052Df';  // config.ownerAddress
 
@@ -18,7 +20,7 @@ try {
 }
 const web3Instance = new web3(provider);
 const nftContract = new web3Instance.eth.Contract(
-    config.abi,
+    abi,
     config.contractAddress,
     {gasLimit: "1000000"}
 );
