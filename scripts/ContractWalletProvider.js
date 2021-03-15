@@ -30,4 +30,4 @@ const nftContract = new web3Instance.eth.Contract(
     {gasLimit: "1000000"}
 );
 
-module.exports = {config: config, contract: nftContract, abi: abi};
+module.exports = {config: config, contract: nftContract, abi: abi, web3: web3Instance};
