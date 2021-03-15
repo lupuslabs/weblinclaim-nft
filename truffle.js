@@ -28,7 +28,7 @@ module.exports = {
             provider: function () {
                 return new HDWalletProvider(configLive.mnemonic, configLive.providerUrl);
             },
-            gas: 3500000,
+            gas: 250000,
             gasPrice: 200e9,
         },
     },

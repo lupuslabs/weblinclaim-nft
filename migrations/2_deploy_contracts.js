@@ -13,7 +13,7 @@ module.exports = async (deployer, network, addresses) => {
     const baseUrl = 'https://item.weblin.com/Metadata/';
 
   if (true) {
-    await deployer.deploy(WeblinItem, proxyRegistryAddress, baseUrl, {gas: 5000000});
+    await deployer.deploy(WeblinItem, proxyRegistryAddress, baseUrl, {gas: 3500000});
   }
 
 };
