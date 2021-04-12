@@ -15,7 +15,7 @@ const {config, contract, abi, web3} = require('./ContractWalletProvider.js');
         to: config.ownerAddress,
         value: "0",
         data: "",
-        nonce: 8,
+        nonce: 3,
     }, '').then(console.log);
 
 //    process.exit();
