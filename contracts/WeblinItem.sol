@@ -9,13 +9,11 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
  */
 contract WeblinItem is ERC721Tradable {
 
-    constructor(address _proxyRegistryAddress, string memory _baseURI)
+    constructor(address _proxyRegistryAddress)
         public
-        ERC721Tradable("WeblinItem", "WI", _proxyRegistryAddress, _baseURI)
+        ERC721Tradable("Loot Places", "LOTP", _proxyRegistryAddress)
     {
     }
 
-    function contractURI() public view returns (string memory) {
-        return baseTokenURI();
-    }
+
 }

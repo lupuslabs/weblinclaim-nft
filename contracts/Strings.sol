@@ -19,6 +19,10 @@ library Strings {
       return string(babcde);
     }
 
+    function strConcat(string memory _a, string memory _b, string memory _c, string memory _d, string memory _e, string memory _f, string memory _g) internal pure returns (string memory) {
+        return strConcat( strConcat(_a, _b, _c, _d), _e, _f, _g);
+    }
+
     function strConcat(string memory _a, string memory _b, string memory _c, string memory _d) internal pure returns (string memory) {
         return strConcat(_a, _b, _c, _d, "");
     }
