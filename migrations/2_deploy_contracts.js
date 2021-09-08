@@ -1,4 +1,4 @@
-const WeblinItem = artifacts.require("./WeblinItem.sol");
+const Contract = artifacts.require("./LootPlaces.sol");
 
 
 module.exports = async (deployer, network, addresses) => {
@@ -10,10 +10,9 @@ module.exports = async (deployer, network, addresses) => {
     proxyRegistryAddress = "0xa5409ec958c83c3f309868babaca7c86dcb077c1";
   }
 
-    const baseUrl = 'https://item.weblin.com/Metadata/';
 
   if (true) {
-    await deployer.deploy(WeblinItem, proxyRegistryAddress, {gas: 6000000});
+    await deployer.deploy(Contract, proxyRegistryAddress, {gas: 6000000});
   }
 
 };

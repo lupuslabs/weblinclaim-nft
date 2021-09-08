@@ -7,7 +7,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
  * @title WeblinItem
  * WeblinItem - a contract for my non-fungible WeblinItems.
  */
-contract WeblinItem is ERC721Tradable {
+contract LootPlaces is ERC721Tradable {
 
     constructor(address _proxyRegistryAddress)
         public

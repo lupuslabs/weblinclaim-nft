@@ -1,2 +1,2 @@
-./node_modules/.bin/truffle-flattener contracts/WeblinItem.sol > flattened/WeblinItem.sol
+./node_modules/.bin/truffle-flattener contracts/LootPlaces.sol > flattened/LootPlaces.sol
 
