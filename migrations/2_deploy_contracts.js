@@ -12,7 +12,7 @@ module.exports = async (deployer, network, addresses) => {
 
 
   if (true) {
-    await deployer.deploy(Contract, proxyRegistryAddress, {gas: 6000000});
+    await deployer.deploy(Contract, proxyRegistryAddress);
   }
 
 };

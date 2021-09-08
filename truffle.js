@@ -19,7 +19,7 @@ module.exports = {
             provider: function () {
                 return new HDWalletProvider(configRinkeby.mnemonic, configRinkeby.providerUrl);
             },
-            gas: 3500000,
+            gas: 10000000,
             gasPrice: 5e9,
             network_id: "*",
         },

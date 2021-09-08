@@ -201,17 +201,17 @@ contract ERC721Tradable is ERC721Full, Ownable {
         parts[1] = getDomain(tokenId);
         parts[2] = '"}, {"trait_type": "Strength", "value": "';
         parts[3] =  getStrength(tokenId);
-        parts[2] = '"}, {"trait_type": "Resource", "value": "';
+        parts[4] = '"}, {"trait_type": "Resource", "value": "';
         parts[5] =  getResource(tokenId);
-        parts[2] = '"}, {"trait_type": "Security", "value": "';
+        parts[6] = '"}, {"trait_type": "Security", "value": "';
         parts[7] =  getSecurity(tokenId);
-        parts[2] = '"}, {"trait_type": "Magic", "value": "';
+        parts[8] = '"}, {"trait_type": "Magic", "value": "';
         parts[9] =  getMagic(tokenId);
-        parts[2] = '"}, {"trait_type": "Faction", "value": "';
+        parts[10] = '"}, {"trait_type": "Faction", "value": "';
         parts[11] =  getFaction(tokenId);
-        parts[2] = '"}, {"trait_type": "Info", "value": "';
+        parts[12] = '"}, {"trait_type": "Info", "value": "';
         parts[13] =  getInfo(tokenId);
-        parts[2] = '"}, {"trait_type": "Life", "value": "';
+        parts[14] = '"}, {"trait_type": "Life", "value": "';
         parts[15] =  getLife(tokenId);
         parts[16] = '"}]';
 
@@ -220,7 +220,6 @@ contract ERC721Tradable is ERC721Full, Ownable {
         attrs = Strings.strConcat(attrs, parts[9], parts[10], parts[11], parts[12]);
         attrs = Strings.strConcat(attrs, parts[13], parts[14], parts[15], parts[16]);
 
-        //
         string memory json = Base64.encode(bytes(Strings.strConcat('{"name": "Place #', Strings.uint2str(tokenId), '", "description": " ...desc", "attributes":', attrs, ', "image": "data:image/svg+xml;base64,', Base64.encode(bytes(svg)), '"}')));
         string memory output = Strings.strConcat('data:application/json;base64,', json);
 
