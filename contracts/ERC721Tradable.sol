@@ -238,45 +238,43 @@ contract ERC721Tradable is ERC721Full, Ownable {
         return sourceArray[index];
     }
 
+    function appendLine(string memory _base, string memory _left, string memory _a, string memory _right, string memory _b, string memory _close) internal pure returns (string memory) {
+        return Strings.cat(Strings.cat(Strings.cat(Strings.cat(Strings.cat(_base, _left), _a), _right), _b), _close);
+    }
+
+    string svgLeft = '</text><text x="10" y="';
+    string svgRight = '" class="base">';
+    string svgClose = '</text>';
+    uint256 svgDY = 20;
+    string attrsLeft = '{"trait_type": "';
+    string attrsRight = '", "value": "';
+    string attrsClose = '"},';
+
     function tokenURI(uint256 tokenId) external view returns (string memory) {
         require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
 
+        uint256 svgY = 20;
         string memory svg = '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: white; font-family: serif; font-size: 14px; }</style><rect width="100%" height="100%" fill="black" />';
-        svg = Strings.cat(svg, '<text x="10" y="20" class="base">');
-        svg = Strings.cat(svg, getDomain(tokenId));
-        svg = Strings.cat(svg, '</text><text x="10" y="40" class="base">');
-        svg = Strings.cat(svg, getStrength(tokenId));
-        svg = Strings.cat(svg, '</text><text x="10" y="60" class="base">');
-        svg = Strings.cat(svg, getResource(tokenId));
-        svg = Strings.cat(svg, '</text><text x="10" y="80" class="base">');
-        svg = Strings.cat(svg, getSecurity(tokenId));
-        svg = Strings.cat(svg, '</text><text x="10" y="100" class="base">');
-        svg = Strings.cat(svg, getMagic(tokenId));
-        svg = Strings.cat(svg, '</text><text x="10" y="120" class="base">');
-        svg = Strings.cat(svg, getFaction(tokenId));
-        svg = Strings.cat(svg, '</text><text x="10" y="140" class="base">');
-        svg = Strings.cat(svg, getInfo(tokenId));
-        svg = Strings.cat(svg, '</text><text x="10" y="160" class="base">');
-        svg = Strings.cat(svg, getEnvironment(tokenId));
+        svg = appendLine(svg, svgLeft, Strings.uint2str(svgY), svgRight, getDomain(tokenId), svgClose); svgY += svgDY;
+        svg = appendLine(svg, svgLeft, Strings.uint2str(svgY), svgRight, getStrength(tokenId), svgClose); svgY += svgDY;
+        svg = appendLine(svg, svgLeft, Strings.uint2str(svgY), svgRight, getResource(tokenId), svgClose); svgY += svgDY;
+        svg = appendLine(svg, svgLeft, Strings.uint2str(svgY), svgRight, getSecurity(tokenId), svgClose); svgY += svgDY;
+        svg = appendLine(svg, svgLeft, Strings.uint2str(svgY), svgRight, getMagic(tokenId), svgClose); svgY += svgDY;
+        svg = appendLine(svg, svgLeft, Strings.uint2str(svgY), svgRight, getFaction(tokenId), svgClose); svgY += svgDY;
+        svg = appendLine(svg, svgLeft, Strings.uint2str(svgY), svgRight, getInfo(tokenId), svgClose); svgY += svgDY;
+        svg = appendLine(svg, svgLeft, Strings.uint2str(svgY), svgRight, getEnvironment(tokenId), svgClose); svgY += svgDY;
         svg = Strings.cat(svg, '</text></svg>');
 
-        string memory attrs = '[{"trait_type": "Domain", "value": "';
-        attrs = Strings.cat(attrs, getDomain(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Strength", "value": "');
-        attrs = Strings.cat(attrs, getStrength(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Resource", "value": "');
-        attrs = Strings.cat(attrs, getResource(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Security", "value": "');
-        attrs = Strings.cat(attrs, getSecurity(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Magic", "value": "');
-        attrs = Strings.cat(attrs, getMagic(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Faction", "value": "');
-        attrs = Strings.cat(attrs, getFaction(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Info", "value": "');
-        attrs = Strings.cat(attrs, getInfo(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Environment", "value": "');
-        attrs = Strings.cat(attrs, getEnvironment(tokenId));
-        attrs = Strings.cat(attrs, '"}]');
+        string memory attrs = '[';
+        attrs = appendLine(attrs, attrsLeft, 'Domain', attrsRight, getDomain(tokenId), attrsClose);
+        attrs = appendLine(attrs, attrsLeft, 'Strength', attrsRight, getStrength(tokenId), attrsClose);
+        attrs = appendLine(attrs, attrsLeft, 'Resource', attrsRight, getResource(tokenId), attrsClose);
+        attrs = appendLine(attrs, attrsLeft, 'Security', attrsRight, getSecurity(tokenId), attrsClose);
+        attrs = appendLine(attrs, attrsLeft, 'Magic', attrsRight, getMagic(tokenId), attrsClose);
+        attrs = appendLine(attrs, attrsLeft, 'Faction', attrsRight, getFaction(tokenId), attrsClose);
+        attrs = appendLine(attrs, attrsLeft, 'Info', attrsRight, getInfo(tokenId), attrsClose);
+        attrs = appendLine(attrs, attrsLeft, 'Environment', attrsRight, getEnvironment(tokenId), '"}');
+        attrs = Strings.cat(attrs, ']');
 
         string memory json = '{"name": "Place #';
         json = Strings.cat(json, Strings.uint2str(tokenId));
