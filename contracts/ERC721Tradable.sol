@@ -10,7 +10,6 @@ contract ProxyRegistry {
     mapping(address => OwnableDelegateProxy) public proxies;
 }
 
-
 /**
  * @title ERC721Tradable
  * ERC721Tradable - ERC721 contract that whitelists a trading address, and has minting functionality.
@@ -20,61 +19,121 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
     address proxyRegistryAddress;
 
-    string[] private domains_high = [
-    "example.com",
-    "twitter.com",
-    "facebook.com",
-    "sui.li"
+    string[] private domainsRare = [
+        "microstrategy.com",
+        "007.com",
+        "beeple-crap.com",
+        "robinhood.com",
+        "blackrock.com",
+        "foxnews.com",
+        "nestle.com",
+        "worldbank.org",
+        "starwars.com",
+        "yahoo.com",
+        "craigslist.org",
+        "ebay.com",
+        "etsy.com",
+        "imdb.com",
+        "christies.com",
+        "binance.com",
+        "zerohedge.com",
+        "ethgasstation.info",
+        "gemini.com",
+        "coinmarketcap.com"
     ];
 
-    string[] private domains_mid = [
-    "example.com",
-    "twitter.com",
-    "facebook.com",
-    "sui.li"
+    string[] private domainsMed = [
+        "cointelegraph.com",
+        "decrypt.co",
+        "niftygateway.com",
+        "beta.cent.co",
+        "mintable.app",
+        "trevornoah.com",
+        "messi.com",
+        "50cent.com",
+        "loganpaul.com",
+        "billieeilish.com",
+        "threshold.vc",
+        "sequoiacap.com",
+        "accel.com",
+        "usv.com",
+        "earlybird.com",
+        "balderton.com",
+        "indexventures.com",
+        "parsec.finance",
+        "boost.vc",
+        "nsa.gov",
+        "federalreserve.gov",
+        "sec.gov",
+        "defense.gov",
+        "fridaysforfuture.org",
+        "ipcc.ch",
+        "nasa.gov",
+        "venturebeat.com",
+        "tyt.com"
     ];
 
-    string[] private domains_low = [
-    "google.com",
-    "twitter.com",
-    "facebook.com",
-    "sui.li"
+    string[] private domainsCommon = [
+        "huffpost.com",
+        "buzzfeed.com",
+        "wsj.com",
+        "greyscale.co",
+        "cnn.com",
+        "nytimes.com",
+        "britannica.com",
+        "wattpad.com",
+        "mastercard.de",
+        "trump.com",
+        "opec.org",
+        "bridgewater.com",
+        "goldmansachs.com",
+        "disney.com",
+        "xkcd.com",
+        "akb48.co.jp",
+        "tvtropes.org",
+        "orionsarm.com",
+        "stackoverflow.com",
+        "4chan.org",
+        "steemit.com",
+        "medium.com",
+        "roblox.com",
+        "cyberpunk.net",
+        "mario.nintendo.com",
+        "minecraft.net",
+        "gatherer.wizards.com",
+        "pokemoncenter.com",
+        "linkedin.com",
+        "youtube.com",
+        "messari.io",
+        "travisscott.com",
+        "wikipedia.org",
+        "instagram.com",
+        "apple.com",
+        "twitter.com",
+        "aliexpress.com",
+        "imgur.com",
+        "amazon.com",
+        "facebook.com",
+        "reddit.com",
+        "netflix.com",
+        "twitch.tv",
+        "cnn.com",
+        "adobe.com",
+        "nytimes.com",
+        "walmart.com",
+        "indeed.com",
+        "espn.com",
+        "hulu.com",
+        "github.com",
+        "spotify.com"
     ];
 
-    string[] private resources = [
-    "Soil",
-    "Rocks",
-    "Minerals",
-    "Water",
-    "Waste",
-
-    "Volatiles",
-    "Relics",
-    "Rare earths",
-
-    "Precious metals",
-    "Gems"
-    ];
-
-    string[] private secs = [
-    "Anarchy", "Fractionalized", "Lowsec", "Controlled", "Policed", "Secured", "Safe", "sec8", "sec9", "sec10"
-    ];
-
-    string[] private magics = [
-    "MAnarchy", "MFractionalized", "MLowsec", "MControlled", "MPoliced", "MSecured", "MSafe", "Msec8", "Msec9", "Msec10"
-    ];
-
-    string[] private factions = [
-    "FAnarchy", "FFractionalized", "FLowsec", "FControlled", "FPoliced", "FSecured", "FSafe", "Fsec8", "Fsec9", "Fsec10"
-    ];
-
-    string[] private infos = [
-    "IAnarchy", "IFractionalized", "ILowsec", "IControlled", "IPoliced", "ISecured", "ISafe", "Isec8", "Isec9", "Isec10"
-    ];
-
-    string[] private lifes = [
-    "LAnarchy", "LFractionalized", "LLowsec", "LControlled", "LPoliced", "LSecured", "LSafe", "Lsec8", "Lsec9", "Lsec10"
-    ];
+    string[] private resourceSet =    [ "Rocks"      , "Minerals"   , "Ore"       , "Waste"          , "Relics"    , "Rare earths", "Precious metals", "Gems"     ]; 
+    string[] private securitySet =    [ "Policed"    , "Factional"  , "Lowsec"    , "Controlled"     , "Dark"      , "Secured"    , "Anarchy"        , "Safe"     ]; 
+    string[] private magicSet =       [ "Silent"     , "Gaia"       , "Kami"      , "Elemental"      , "Arcane"    , "Wizardy"    , "Devine"         , "Demonic"  ]; 
+    string[] private factionSet =     [ "Brass"      , "Obsidian"   , "Chrome"    , "Onyx"           , "Lava"      , "Almond"     , "Coral"          , "Taupe"    ]; 
+    string[] private infoSet =        [ "Unconnected", "Slow"       , "Wired"     , "Ubiquitous"     , "Embedded"  , "Matrix"     , "Quantum"        , "Transcend"]; 
+    string[] private environmentSet = [ "Supportive" , "Indifferent", "Hostile"   , "Disadvantageous", "Harmful"   , "Rich"       , "Lethal"         , "Lush"     ]; 
 
     constructor(
         string memory _name,
@@ -96,17 +155,18 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
     function getDomain(uint256 tokenId) public view returns (string memory) {
 
-        string memory output = "";
+        string memory output = '';
         uint256 rand = random(Strings.uint2str(tokenId));
         uint256 rareness = rand % 10000;
 
         if (rareness < 2) {
-            output = domains_high[rand % domains_high.length];
+            output = domainsRare[rand % domainsRare.length];
         } else if (rareness < 30 ) {
-            output = domains_mid[rand % domains_mid.length];
+            output = domainsMed[rand % domainsMed.length];
         } else {
-            output = domains_low[rand % domains_low.length];
+            output = domainsCommon[rand % domainsCommon.length];
         }
+
         return output;
     }
 
@@ -123,109 +183,112 @@ contract ERC721Tradable is ERC721Full, Ownable {
         } else {
             value = rand % 4 + 1;
         }
+
         return Strings.uint2str(value * 100000);
     }
 
     function getResource(uint256 tokenId) public view returns (string memory) {
-        return propProb(tokenId, "Resource", resources);
+        return getProperty(tokenId, "Resource", resourceSet);
     }
 
     function getSecurity(uint256 tokenId) public view returns (string memory) {
-        return propProb(tokenId, "Security", secs);
+        return getProperty(tokenId, "Security", securitySet);
     }
 
     function getMagic(uint256 tokenId) public view returns (string memory) {
-        return propProb(tokenId, "Magic", magics);
+        return getProperty(tokenId, "Magic", magicSet);
     }
 
     function getFaction(uint256 tokenId) public view returns (string memory) {
-        return propProb(tokenId, "Faction", factions);
+        return getProperty(tokenId, "Faction", factionSet);
     }
 
     function getInfo(uint256 tokenId) public view returns (string memory) {
-        return propProb(tokenId, "Info", infos);
+        return getProperty(tokenId, "Info", infoSet);
     }
 
-    function getLife(uint256 tokenId) public view returns (string memory) {
-        return propProb(tokenId, "Life", lifes);
+    function getEnvironment(uint256 tokenId) public view returns (string memory) {
+        return getProperty(tokenId, "Environment", environmentSet);
     }
 
 
-    function propProb(uint256 tokenId, string memory keyPrefix, string[] memory sourceArray) internal view returns (string memory) {
+    function getProperty(uint256 tokenId, string memory keyPrefix, string[] memory sourceArray) internal view returns (string memory) {
         uint256 rand = random(string(abi.encodePacked(keyPrefix, Strings.uint2str(tokenId))));
         uint256 rareness = rand % 10000;
 
         uint256 index;
 
         if (rareness < 100) {
-            index = rand % 2 + 8;
+            index = rand % 2 + 6;
         } else if (rareness < 1000 ) {
-            index = rand % 3 + 5;
+            index = rand % 2 + 4;
         } else {
-            index = rand % 5;
+            index = rand % 4;
         }
 
-        string memory output = sourceArray[index];
-
-        return output;
+        return sourceArray[index];
     }
 
     function tokenURI(uint256 tokenId) external view returns (string memory) {
         require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
 
-        string[17] memory parts;
-        parts[0] = '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: white; font-family: serif; font-size: 14px; }</style><rect width="100%" height="100%" fill="black" /><text x="10" y="20" class="base">';
-        parts[1] = getDomain(tokenId);
-        parts[2] = '</text><text x="10" y="40" class="base">';
-        parts[3] =  getStrength(tokenId);
-        parts[4] = '</text><text x="10" y="60" class="base">';
-        parts[5] =  getResource(tokenId);
-        parts[6] = '</text><text x="10" y="80" class="base">';
-        parts[7] =  getSecurity(tokenId);
-        parts[8] = '</text><text x="10" y="100" class="base">';
-        parts[9] =  getMagic(tokenId);
-        parts[10] = '</text><text x="10" y="120" class="base">';
-        parts[11] =  getFaction(tokenId);
-        parts[12] = '</text><text x="10" y="140" class="base">';
-        parts[13] =  getInfo(tokenId);
-        parts[14] = '</text><text x="10" y="160" class="base">';
-        parts[15] =  getLife(tokenId);
-        parts[16] = '</text></svg>';
+        string memory domain = getDomain(tokenId);
+        string memory strength = getStrength(tokenId);
+        string memory resource = getResource(tokenId);
+        string memory security = getSecurity(tokenId);
+        string memory magic = getMagic(tokenId);
+        string memory faction = getFaction(tokenId);
+        string memory info = getInfo(tokenId);
+        string memory environment = getEnvironment(tokenId);
 
-        string memory svg = Strings.strConcat(parts[0], parts[1], parts[2], parts[3], parts[4]);
-        svg = Strings.strConcat(svg, parts[5], parts[6], parts[7], parts[8]);
-        svg = Strings.strConcat(svg, parts[9], parts[10], parts[11], parts[12]);
-        svg = Strings.strConcat(svg, parts[13], parts[14], parts[15], parts[16]);
+        string memory svg = '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: white; font-family: serif; font-size: 14px; }</style><rect width="100%" height="100%" fill="black" />';
+        svg = Strings.cat(svg, '<text x="10" y="20" class="base">');
+        svg = Strings.cat(svg, domain );
+        svg = Strings.cat(svg, '</text><text x="10" y="40" class="base">');
+        svg = Strings.cat(svg, strength );
+        svg = Strings.cat(svg, '</text><text x="10" y="60" class="base">');
+        svg = Strings.cat(svg, resource );
+        svg = Strings.cat(svg, '</text><text x="10" y="80" class="base">');
+        svg = Strings.cat(svg, security );
+        svg = Strings.cat(svg, '</text><text x="10" y="100" class="base">');
+        svg = Strings.cat(svg, magic );
+        svg = Strings.cat(svg, '</text><text x="10" y="120" class="base">');
+        svg = Strings.cat(svg, faction );
+        svg = Strings.cat(svg, '</text><text x="10" y="140" class="base">');
+        svg = Strings.cat(svg, info );
+        svg = Strings.cat(svg, '</text><text x="10" y="160" class="base">');
+        svg = Strings.cat(svg, environment);
+        svg = Strings.cat(svg, '</text>');
 
-        parts[0] = '[{"trait_type": "Domain", "value": "';
-        parts[1] = getDomain(tokenId);
-        parts[2] = '"}, {"trait_type": "Strength", "value": "';
-        parts[3] =  getStrength(tokenId);
-        parts[4] = '"}, {"trait_type": "Resource", "value": "';
-        parts[5] =  getResource(tokenId);
-        parts[6] = '"}, {"trait_type": "Security", "value": "';
-        parts[7] =  getSecurity(tokenId);
-        parts[8] = '"}, {"trait_type": "Magic", "value": "';
-        parts[9] =  getMagic(tokenId);
-        parts[10] = '"}, {"trait_type": "Faction", "value": "';
-        parts[11] =  getFaction(tokenId);
-        parts[12] = '"}, {"trait_type": "Info", "value": "';
-        parts[13] =  getInfo(tokenId);
-        parts[14] = '"}, {"trait_type": "Life", "value": "';
-        parts[15] =  getLife(tokenId);
-        parts[16] = '"}]';
+        string memory attrs = '[';
+        attrs = Strings.cat(attrs, '{"trait_type": "Domain", "value": "');
+        attrs = Strings.cat(attrs, domain );
+        attrs = Strings.cat(attrs, '{"trait_type": "Strength", "value": "');
+        attrs = Strings.cat(attrs, strength );
+        attrs = Strings.cat(attrs, '{"trait_type": "Resource", "value": "');
+        attrs = Strings.cat(attrs, resource );
+        attrs = Strings.cat(attrs, '{"trait_type": "Security", "value": "');
+        attrs = Strings.cat(attrs, security );
+        attrs = Strings.cat(attrs, '{"trait_type": "Magic", "value": "');
+        attrs = Strings.cat(attrs, magic );
+        attrs = Strings.cat(attrs, '{"trait_type": "Faction", "value": "');
+        attrs = Strings.cat(attrs, faction );
+        attrs = Strings.cat(attrs, '{"trait_type": "Info", "value": "');
+        attrs = Strings.cat(attrs, info );
+        attrs = Strings.cat(attrs, '{"trait_type": "Environment", "value": "');
+        attrs = Strings.cat(attrs, environment );
+        attrs = Strings.cat(attrs, ']');
 
-        string memory attrs = Strings.strConcat(parts[0], parts[1], parts[2], parts[3], parts[4]);
-        attrs = Strings.strConcat(attrs, parts[5], parts[6], parts[7], parts[8]);
-        attrs = Strings.strConcat(attrs, parts[9], parts[10], parts[11], parts[12]);
-        attrs = Strings.strConcat(attrs, parts[13], parts[14], parts[15], parts[16]);
+        string memory json = '{"name": "Place #';
+        json = Strings.cat(json, Strings.uint2str(tokenId));
+        json = Strings.cat(json, '", "description": "Metaverse loot places for adventurers. The token defines properties of a web based metaverse location.", "attributes":');
+        json = Strings.cat(json, attrs);
+        json = Strings.cat(json, ', "image": "data:image/svg+xml;base64,');
+        json = Strings.cat(json, Base64.encode(bytes(svg)));
+        json = Strings.cat(json, '"}');
 
-        string memory json = Base64.encode(bytes(Strings.strConcat('{"name": "Place #', Strings.uint2str(tokenId), '", "description": " ...desc", "attributes":', attrs, ', "image": "data:image/svg+xml;base64,', Base64.encode(bytes(svg)), '"}')));
-        string memory output = Strings.strConcat('data:application/json;base64,', json);
-
-        return output;
+        return Strings.cat('data:application/json;base64,', Base64.encode(bytes(json)));
     }
-
 
     /**
      * Override isApprovedForAll to whitelist user's OpenSea proxy accounts to enable gas-less listings.
