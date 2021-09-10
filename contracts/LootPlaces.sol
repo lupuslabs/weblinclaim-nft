@@ -5,7 +5,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 /**
  * @title LootPlaces
- * LootPlaces - a contract for my non-fungible Metaverse Loot Places as building blocks.
+ * LootPlaces - a contract for my non-fungible Metaverse Loot Places as building blocks for the metaverse.
  */
 contract LootPlaces is ERC721Tradable {
 

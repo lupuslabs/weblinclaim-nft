@@ -1,5 +1,5 @@
 ## Scratchpad
 
 npm install -g truffle
-truffle build
+truffle compile
 truffle deploy --network=rinkeby

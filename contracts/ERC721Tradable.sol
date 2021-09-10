@@ -20,111 +20,142 @@ contract ERC721Tradable is ERC721Full, Ownable {
     address proxyRegistryAddress;
 
     string[] private domainsRare = [
-        "microstrategy",
-        "007",
-        "beeple-crap",
-        "robinhood",
-        "blackrock",
-        "foxnews",
-        "nestle",
-        "worldbank.org",
-        "starwars",
-        "yahoo",
-        "craigslist.org",
-        "ebay",
-        "etsy",
-        "imdb",
-        "christies",
-        "binance",
-        "zerohedge",
-        "ethgasstation.info",
-        "gemini",
-        "coinmarketcap"
+        "tesla", 
+        "starwars", 
+        "garyvaynerchuk", 
+        "billieeilish", 
+        "nsa.gov", 
+        "youtube.com/user/PewDiePie", 
+        "spotify", 
+        "apple", 
+        "paypal", 
+        "facebook", 
+        "netflix", 
+        "ethereum.org", 
+        "axieinfinity", 
+        "pokemoncenter", 
+        "minecraft.net", 
+        "berniesanders", 
+        "beeple-crap", 
+        "opensea.io", 
+        "sothebys", 
+        "christies"
     ];
 
     string[] private domainsMed = [
-        "cointelegraph",
-        "decrypt.co",
-        "niftygateway",
-        "beta.cent.co",
-        "mintable.app",
-        "trevornoah",
-        "messi",
-        "50cent",
-        "loganpaul",
-        "billieeilish",
-        "threshold.vc",
-        "sequoiacap",
-        "accel",
-        "usv",
-        "earlybird",
-        "balderton",
-        "indexventures",
-        "parsec.finance.com",
-        "boost.vc",
-        "nsa.gov",
-        "federalreserve.gov",
-        "sec.gov",
-        "defense.gov",
-        "fridaysforfuture.org",
-        "ipcc.ch",
-        "nasa.gov",
-        "venturebeat",
-        "tyt"
+        "microsoft", 
+        "time", 
+        "coinbase", 
+        "007", 
+        "yahoo", 
+        "imdb", 
+        "ebay", 
+        "etsy", 
+        "craigslist.org", 
+        "steemit", 
+        "huffpost", 
+        "buzzfeed", 
+        "cnn", 
+        "medium", 
+        "youtube", 
+        "nytimes", 
+        "espn", 
+        "hulu", 
+        "github", 
+        "stackoverflow", 
+        "giphy", 
+        "4chan.org", 
+        "nasa.gov", 
+        "wsj", 
+        "roblox", 
+        "chess", 
+        "blackrock", 
+        "worldbank.org", 
+        "nestle", 
+        "ethgasstation.info"
     ];
 
     string[] private domainsCommon = [
-        "huffpost",
-        "buzzfeed",
-        "wsj",
-        "greyscale.co",
-        "cnn",
-        "nytimes",
-        "britannica",
-        "wattpad",
-        "mastercard",
-        "trump",
-        "opec.org",
-        "bridgewater",
-        "goldmansachs",
-        "disney",
-        "xkcd",
-        "akb48.co.jp",
-        "tvtropes.org",
-        "orionsarm",
-        "stackoverflow",
-        "4chan.org",
-        "steemit",
-        "medium",
-        "roblox",
-        "cyberpunk.net",
-        "mario.nintendo",
-        "minecraft.net",
-        "pokemoncenter",
-        "linkedin",
-        "youtube",
-        "messari.io",
-        "travisscott",
-        "wikipedia.org",
-        "instagram",
-        "apple",
-        "twitter",
-        "aliexpress",
-        "imgur",
-        "amazon",
-        "facebook",
-        "reddit",
-        "netflix",
-        "twitch.tv",
-        "cnn",
-        "adobe",
-        "nytimes",
-        "walmart",
-        "indeed",
-        "espn",
-        "hulu",
-        "github",
-        "spotify"
+        "3lau", 
+        "banklesshq", 
+        "thedailygwei.substack", 
+        "forbes.com/crypto-blockchain", 
+        "a16z", 
+        "draper.vc", 
+        "veefriends", 
+        "microstrategy", 
+        "robinhood", 
+        "gemini", 
+        "coinmarketcap", 
+        "cointelegraph", 
+        "decrypt.co", 
+        "niftygateway", 
+        "beta.cent.co", 
+        "mintable.app", 
+        "trevornoah", 
+        "twitter.com/jack", 
+        "twitter.com/hamillhimself", 
+        "twitter.com/elonmusk", 
+        "messi", 
+        "50cent", 
+        "loganpaul", 
+        "twitch.tv/trymacs", 
+        "sequoiacap", 
+        "earlybird", 
+        "indexventures", 
+        "parsec.finance", 
+        "federalreserve.gov", 
+        "sec.gov", 
+        "fridaysforfuture.org", 
+        "ipcc.ch", 
+        "venturebeat", 
+        "greyscale.co", 
+        "britannica", 
+        "goldmansachs", 
+        "disney", 
+        "en.wikipedia.org/wiki/Rocket_Raccoon", 
+        "xkcd", 
+        "akb48.co.jp", 
+        "tvtropes.org", 
+        "reddit.com/r/Bitcoin", 
+        "reddit.com/r/ethereum", 
+        "cyberpunk.net", 
+        "mario.nintendo", 
+        "thelastofus.fandom.com/wiki/Ellie", 
+        "epicgames.com/fortnite", 
+        "gatherer.wizards.com", 
+        "kraken", 
+        "deviantart.com/tag/chloeprice", 
+        "larvalabs.com/cryptopunks", 
+        "linkedin", 
+        "messari.io", 
+        "imgur", 
+        "samsung", 
+        "fandom", 
+        "geeksforgeeks.org", 
+        "discordapp", 
+        "wellsfargo", 
+        "fidelity", 
+        "investopedia", 
+        "theoceancleanup", 
+        "seashepherd.org", 
+        "greenpeace.org", 
+        "gitcoin.co", 
+        "uniswap.org", 
+        "aave", 
+        "chain.link", 
+        "makerdao", 
+        "bitcoin.org", 
+        "polygon.technology", 
+        "filecoin.io", 
+        "thegraph", 
+        "sushi", 
+        "wired", 
+        "4ocean", 
+        "cookpad", 
+        "allrecipies", 
+        "delish", 
+        "thekitchn"
     ];
 
     string[] private resourceSet =    [ "Rocks"      , "Minerals"   , "Ore"       , "Waste"      , "Relics"    , "Rare earths", "Precious metals", "Gems"     ]; 
@@ -161,11 +192,11 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
         string memory output = '';
         uint256 rand = random(Strings.uint2str(tokenId));
-        uint256 rareness = rand % 10000;
+        uint256 prob = rand % 10000;
 
-        if (rareness < 2) {
+        if (prob < 100) {
             output = domainsRare[rand % domainsRare.length];
-        } else if (rareness < 30 ) {
+        } else if (prob < 1000 ) {
             output = domainsMed[rand % domainsMed.length];
         } else {
             output = domainsCommon[rand % domainsCommon.length];
@@ -183,11 +214,11 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
         uint256 value;
         uint256 rand = random(Strings.uint2str(tokenId));
-        uint256 rareness = rand % 10000;
+        uint256 prob = rand % 10000;
 
-        if (rareness < 100) {
+        if (prob < 100) {
             value = rand % 2 + 8;
-        } else if (rareness < 1000) {
+        } else if (prob < 1000) {
             value = rand % 3 + 5;
         } else {
             value = rand % 4 + 1;
@@ -223,13 +254,13 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
     function getProperty(uint256 tokenId, string memory keyPrefix, string[] memory sourceArray) internal pure returns (string memory) {
         uint256 rand = random(string(abi.encodePacked(keyPrefix, Strings.uint2str(tokenId))));
-        uint256 rareness = rand % 10000;
+        uint256 prob = rand % 10000;
 
         uint256 index;
 
-        if (rareness < 100) {
+        if (prob < 100) {
             index = rand % 2 + 6;
-        } else if (rareness < 1000 ) {
+        } else if (prob < 1000 ) {
             index = rand % 2 + 4;
         } else {
             index = rand % 4;
@@ -237,6 +268,8 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
         return sourceArray[index];
     }
+
+    string _description = 'Metaverse Loot Places (for Adventurers). These tokens let you claim ownership of web based metaverse places AND they define individual properties for these places.';
 
     function tokenURI(uint256 tokenId) external view returns (string memory) {
         require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
@@ -280,11 +313,21 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
         string memory json = '{"name": "Place #';
         json = Strings.cat(json, Strings.uint2str(tokenId));
-        json = Strings.cat(json, '", "description": "Metaverse loot places for adventurers. The token defines properties of a web based metaverse location.", "attributes":');
+        json = Strings.cat(json, '", "description": "');
+        json = Strings.cat(json, _description);
+        json = Strings.cat(json, '", "attributes":');
         json = Strings.cat(json, attrs);
         json = Strings.cat(json, ', "image": "data:image/svg+xml;base64,');
         json = Strings.cat(json, Base64.encode(bytes(svg)));
         json = Strings.cat(json, '"}');
+
+        return Strings.cat('data:application/json;base64,', Base64.encode(bytes(json)));
+    }
+
+    function contractURI() public view returns (string memory) {
+        string memory json = '{"name": "Metaverse places for adventurers on web pages", "description": "';
+        json = Strings.cat(json, _description);
+        json = Strings.cat(json, '", "external_link": "https://www.weblin.io/LootPlaces", "image": "https://www.weblin.io/images/lootplaces/contract.jpg", "seller_fee_basis_points": 200, "fee_recipient": "0x510F5dD4f91Ee303332B6EAC96bCCE510f05E0E2"}');
 
         return Strings.cat('data:application/json;base64,', Base64.encode(bytes(json)));
     }
