@@ -20,150 +20,150 @@ contract ERC721Tradable is ERC721Full, Ownable {
     address proxyRegistryAddress;
 
     string[] private domainsRare = [
-        "tesla", 
-        "starwars", 
-        "garyvaynerchuk", 
-        "billieeilish", 
+        "tesla.com", 
+        "starwars.com", 
+        "garyvaynerchuk.com", 
+        "billieeilish.com", 
         "nsa.gov", 
         "youtube.com/user/PewDiePie", 
-        "spotify", 
-        "apple", 
-        "paypal", 
-        "facebook", 
-        "netflix", 
+        "spotify.com", 
+        "apple.com", 
+        "paypal.com", 
+        "facebook.com", 
+        "netflix.com", 
         "ethereum.org", 
-        "axieinfinity", 
-        "pokemoncenter", 
+        "axieinfinity.com", 
+        "pokemoncenter.com", 
         "minecraft.net", 
-        "berniesanders", 
-        "beeple-crap", 
+        "berniesanders.com", 
+        "beeple-crap.com", 
         "opensea.io", 
-        "sothebys", 
-        "christies"
+        "sothebys.com", 
+        "christies.com"
     ];
 
     string[] private domainsMed = [
-        "microsoft", 
-        "time", 
-        "coinbase", 
-        "007", 
-        "yahoo", 
-        "imdb", 
-        "ebay", 
-        "etsy", 
+        "microsoft.com", 
+        "time.com", 
+        "coinbase.com", 
+        "007.com", 
+        "yahoo.com", 
+        "imdb.com", 
+        "ebay.com", 
+        "etsy.com", 
         "craigslist.org", 
-        "steemit", 
-        "huffpost", 
-        "buzzfeed", 
-        "cnn", 
-        "medium", 
-        "youtube", 
-        "nytimes", 
-        "espn", 
-        "hulu", 
-        "github", 
-        "stackoverflow", 
-        "giphy", 
+        "steemit.com", 
+        "huffpost.com", 
+        "buzzfeed.com", 
+        "cnn.com", 
+        "medium.com", 
+        "youtube.com", 
+        "nytimes.com", 
+        "espn.com", 
+        "hulu.com", 
+        "github.com", 
+        "stackoverflow.com", 
+        "giphy.com", 
         "4chan.org", 
         "nasa.gov", 
-        "wsj", 
-        "roblox", 
-        "chess", 
-        "blackrock", 
+        "wsj.com", 
+        "roblox.com", 
+        "chess.com", 
+        "blackrock.com", 
         "worldbank.org", 
-        "nestle", 
+        "nestle.com", 
         "ethgasstation.info"
     ];
 
     string[] private domainsCommon = [
-        "3lau", 
-        "banklesshq", 
-        "thedailygwei.substack", 
+        "3lau.com", 
+        "banklesshq.com", 
+        "thedailygwei.substack.com", 
         "forbes.com/crypto-blockchain", 
-        "a16z", 
+        "a16z.com", 
         "draper.vc", 
-        "veefriends", 
-        "microstrategy", 
-        "robinhood", 
-        "gemini", 
-        "coinmarketcap", 
-        "cointelegraph", 
+        "veefriends.com", 
+        "microstrategy.com", 
+        "robinhood.com", 
+        "gemini.com", 
+        "coinmarketcap.com", 
+        "cointelegraph.com", 
         "decrypt.co", 
-        "niftygateway", 
+        "niftygateway.com", 
         "beta.cent.co", 
         "mintable.app", 
-        "trevornoah", 
+        "trevornoah.com", 
         "twitter.com/jack", 
         "twitter.com/hamillhimself", 
         "twitter.com/elonmusk", 
-        "messi", 
-        "50cent", 
-        "loganpaul", 
+        "messi.com", 
+        "50cent.com", 
+        "loganpaul.com", 
         "twitch.tv/trymacs", 
-        "sequoiacap", 
-        "earlybird", 
-        "indexventures", 
+        "sequoiacap.com", 
+        "earlybird.com", 
+        "indexventures.com", 
         "parsec.finance", 
         "federalreserve.gov", 
         "sec.gov", 
         "fridaysforfuture.org", 
         "ipcc.ch", 
-        "venturebeat", 
+        "venturebeat.com", 
         "greyscale.co", 
-        "britannica", 
-        "goldmansachs", 
-        "disney", 
+        "britannica.com", 
+        "goldmansachs.com", 
+        "disney.com", 
         "en.wikipedia.org/wiki/Rocket_Raccoon", 
-        "xkcd", 
+        "xkcd.com", 
         "akb48.co.jp", 
         "tvtropes.org", 
         "reddit.com/r/Bitcoin", 
         "reddit.com/r/ethereum", 
         "cyberpunk.net", 
-        "mario.nintendo", 
+        "mario.nintendo.com", 
         "thelastofus.fandom.com/wiki/Ellie", 
         "epicgames.com/fortnite", 
         "gatherer.wizards.com", 
-        "kraken", 
+        "kraken.com", 
         "deviantart.com/tag/chloeprice", 
         "larvalabs.com/cryptopunks", 
-        "linkedin", 
+        "linkedin.com", 
         "messari.io", 
-        "imgur", 
-        "samsung", 
-        "fandom", 
+        "imgur.com", 
+        "samsung.com", 
+        "fandom.com", 
         "geeksforgeeks.org", 
-        "discordapp", 
-        "wellsfargo", 
-        "fidelity", 
-        "investopedia", 
-        "theoceancleanup", 
+        "discordapp.com", 
+        "wellsfargo.com", 
+        "fidelity.com", 
+        "investopedia.com", 
+        "theoceancleanup.com", 
         "seashepherd.org", 
         "greenpeace.org", 
         "gitcoin.co", 
         "uniswap.org", 
-        "aave", 
+        "aave.com", 
         "chain.link", 
-        "makerdao", 
+        "makerdao.com", 
         "bitcoin.org", 
         "polygon.technology", 
         "filecoin.io", 
-        "thegraph", 
-        "sushi", 
-        "wired", 
-        "4ocean", 
-        "cookpad", 
-        "allrecipies", 
-        "delish", 
-        "thekitchn"
+        "thegraph.com", 
+        "sushi.com", 
+        "wired.com", 
+        "4ocean.com", 
+        "cookpad.com", 
+        "allrecipies.com", 
+        "delish.com", 
+        "thekitchn.com"
     ];
 
-    string[] private resourceSet =    [ "Rocks"      , "Minerals"   , "Ore"       , "Waste"      , "Relics"    , "Rare earths", "Precious metals", "Gems"     ]; 
+    string[] private resourceSet =    [ "Rocks"      , "Minerals"   , "Ore"       , "Waste"      , "Relics"    , "Rare earths.com", "Precious metals.com", "Gems"     ]; 
     string[] private securitySet =    [ "Policed"    , "Factional"  , "Lowsec"    , "Controlled" , "Dark"      , "Secured"    , "Anarchy"        , "Safe"     ]; 
     string[] private magicSet =       [ "Silent"     , "Gaia"       , "Kami"      , "Elemental"  , "Arcane"    , "Wizardy"    , "Devine"         , "Demonic"  ]; 
     string[] private factionSet =     [ "Brass"      , "Obsidian"   , "Chrome"    , "Onyx"       , "Lava"      , "Almond"     , "Coral"          , "Taupe"    ]; 
-    string[] private infoSet =        [ "Unconnected", "Slow"       , "Wired"     , "Ubiquitous" , "Embedded"  , "Matrix"     , "Quantum"        , "Transcend"]; 
-    string[] private environmentSet = [ "Supportive" , "Indifferent", "Hostile"   , "Unfavorable", "Harmful"   , "Rich"       , "Lethal"         , "Lush"     ]; 
+    string[] private infoSet =        [ "Unconnected.com", "Slow"       , "Wired"     , "Ubiquitous" , "Embedded"  , "Matrix"     , "Quantum"        , "Transcend"]; 
+    string[] private environmentSet = [ "Supportive" , "Indifferent.com", "Hostile"   , "Unfavorable.com", "Harmful"   , "Rich"       , "Lethal"         , "Lush"     ]; 
 
     constructor(
         string memory _name,
@@ -175,12 +175,12 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
 
     function claim(uint256 tokenId) public  {
-        require(tokenId > 0 && tokenId <= 9900, "Token ID invalid");
+        require(tokenId > 0 && tokenId <= 7200, "Token ID invalid");
         _mint(_msgSender(), tokenId);
     }
 
     function ownerClaim(uint256 tokenId) public onlyOwner {
-        require(tokenId > 9900 && tokenId <= 10000, "Token ID invalid");
+        require(tokenId > 7200 && tokenId <= 8000, "Token ID invalid");
         _safeMint(owner(), tokenId);
     }
 
@@ -200,11 +200,6 @@ contract ERC721Tradable is ERC721Full, Ownable {
             output = domainsMed[rand % domainsMed.length];
         } else {
             output = domainsCommon[rand % domainsCommon.length];
-        }
-
-        if (!Strings.contains(output, '.')) 
-        {
-            output = Strings.cat(output, '.com');
         }
 
         return output;
@@ -228,27 +223,27 @@ contract ERC721Tradable is ERC721Full, Ownable {
     }
 
     function getResource(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Resource", resourceSet);
+        return getProperty(tokenId, "Resource.com", resourceSet);
     }
 
     function getSecurity(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Security", securitySet);
+        return getProperty(tokenId, "Security.com", securitySet);
     }
 
     function getMagic(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Magic", magicSet);
+        return getProperty(tokenId, "Magic.com", magicSet);
     }
 
     function getFaction(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Faction", factionSet);
+        return getProperty(tokenId, "Faction.com", factionSet);
     }
 
     function getInfo(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Info", infoSet);
+        return getProperty(tokenId, "Info.com", infoSet);
     }
 
     function getEnvironment(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Environment", environmentSet);
+        return getProperty(tokenId, "Environment.com", environmentSet);
     }
 
 
@@ -293,29 +288,29 @@ contract ERC721Tradable is ERC721Full, Ownable {
         svg = Strings.cat(svg, getEnvironment(tokenId));
         svg = Strings.cat(svg, '</text></svg>');
 
-        string memory attrs = '[{"trait_type": "Domain", "value": "';
+        string memory attrs = '[{"trait_type": "Domain.com", "value": "';
         attrs = Strings.cat(attrs, getDomain(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Strength", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Strength.com", "value": "');
         attrs = Strings.cat(attrs, getStrength(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Resource", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Resource.com", "value": "');
         attrs = Strings.cat(attrs, getResource(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Security", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Security.com", "value": "');
         attrs = Strings.cat(attrs, getSecurity(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Magic", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Magic.com", "value": "');
         attrs = Strings.cat(attrs, getMagic(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Faction", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Faction.com", "value": "');
         attrs = Strings.cat(attrs, getFaction(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Info", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Info.com", "value": "');
         attrs = Strings.cat(attrs, getInfo(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Environment", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Environment.com", "value": "');
         attrs = Strings.cat(attrs, getEnvironment(tokenId));
         attrs = Strings.cat(attrs, '"}]');
 
         string memory json = '{"name": "Place #';
         json = Strings.cat(json, Strings.uint2str(tokenId));
-        json = Strings.cat(json, '", "description": "');
+        json = Strings.cat(json, '.com", "description": "');
         json = Strings.cat(json, _description);
-        json = Strings.cat(json, '", "attributes":');
+        json = Strings.cat(json, '.com", "attributes":');
         json = Strings.cat(json, attrs);
         json = Strings.cat(json, ', "image": "data:image/svg+xml;base64,');
         json = Strings.cat(json, Base64.encode(bytes(svg)));
@@ -325,9 +320,9 @@ contract ERC721Tradable is ERC721Full, Ownable {
     }
 
     function contractURI() public view returns (string memory) {
-        string memory json = '{"name": "Metaverse places for adventurers on web pages", "description": "';
+        string memory json = '{"name": "Metaverse places for adventurers on web pages.com", "description": "';
         json = Strings.cat(json, _description);
-        json = Strings.cat(json, '", "external_link": "https://www.weblin.io/LootPlaces", "image": "https://www.weblin.io/images/lootplaces/contract.jpg", "seller_fee_basis_points": 200, "fee_recipient": "0x510F5dD4f91Ee303332B6EAC96bCCE510f05E0E2"}');
+        json = Strings.cat(json, '.com", "external_link": "https://www.weblin.io/LootPlaces.com", "image": "https://www.weblin.io/images/lootplaces/contract.jpg.com", "seller_fee_basis_points": 200, "fee_recipient": "0x510F5dD4f91Ee303332B6EAC96bCCE510f05E0E2"}');
 
         return Strings.cat('data:application/json;base64,', Base64.encode(bytes(json)));
     }

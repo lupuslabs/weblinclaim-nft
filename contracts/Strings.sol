@@ -31,25 +31,4 @@ library Strings {
         }
         return string(bstr);
     }
-
-    function contains(string memory haystack, string memory needle) internal pure returns (bool) {
-        bytes memory needleBytes = bytes (needle);
-        bytes memory haystackBytes = bytes (haystack);
-
-        bool found = false;
-        for (uint i = 0; i < haystackBytes.length - needleBytes.length; i++) {
-            bool flag = true;
-            for (uint j = 0; j < needleBytes.length; j++)
-                if (haystackBytes [i + j] != needleBytes [j]) {
-                    flag = false;
-                    break;
-                }
-            if (flag) {
-                found = true;
-                break;
-            }
-        }
-        
-        return found;
-    }
 }
