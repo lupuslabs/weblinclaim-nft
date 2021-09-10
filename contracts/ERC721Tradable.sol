@@ -158,12 +158,12 @@ contract ERC721Tradable is ERC721Full, Ownable {
         "thekitchn.com"
     ];
 
-    string[] private resourceSet =    [ "Rocks"      , "Minerals"   , "Ore"       , "Waste"      , "Relics"    , "Rare earths.com", "Precious metals.com", "Gems"     ]; 
+    string[] private resourceSet =    [ "Rocks"      , "Minerals"   , "Ore"       , "Waste"      , "Relics"    , "Rare earths", "Precious metals", "Gems"     ]; 
     string[] private securitySet =    [ "Policed"    , "Factional"  , "Lowsec"    , "Controlled" , "Dark"      , "Secured"    , "Anarchy"        , "Safe"     ]; 
     string[] private magicSet =       [ "Silent"     , "Gaia"       , "Kami"      , "Elemental"  , "Arcane"    , "Wizardy"    , "Devine"         , "Demonic"  ]; 
     string[] private factionSet =     [ "Brass"      , "Obsidian"   , "Chrome"    , "Onyx"       , "Lava"      , "Almond"     , "Coral"          , "Taupe"    ]; 
-    string[] private infoSet =        [ "Unconnected.com", "Slow"       , "Wired"     , "Ubiquitous" , "Embedded"  , "Matrix"     , "Quantum"        , "Transcend"]; 
-    string[] private environmentSet = [ "Supportive" , "Indifferent.com", "Hostile"   , "Unfavorable.com", "Harmful"   , "Rich"       , "Lethal"         , "Lush"     ]; 
+    string[] private infoSet =        [ "Unconnected", "Slow"       , "Wired"     , "Ubiquitous" , "Embedded"  , "Matrix"     , "Quantum"        , "Transcend"]; 
+    string[] private environmentSet = [ "Supportive" , "Indifferent", "Hostile"   , "Unfavorable", "Harmful"   , "Rich"       , "Lethal"         , "Lush"     ]; 
 
     constructor(
         string memory _name,
@@ -223,27 +223,27 @@ contract ERC721Tradable is ERC721Full, Ownable {
     }
 
     function getResource(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Resource.com", resourceSet);
+        return getProperty(tokenId, "Resource", resourceSet);
     }
 
     function getSecurity(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Security.com", securitySet);
+        return getProperty(tokenId, "Security", securitySet);
     }
 
     function getMagic(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Magic.com", magicSet);
+        return getProperty(tokenId, "Magic", magicSet);
     }
 
     function getFaction(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Faction.com", factionSet);
+        return getProperty(tokenId, "Faction", factionSet);
     }
 
     function getInfo(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Info.com", infoSet);
+        return getProperty(tokenId, "Info", infoSet);
     }
 
     function getEnvironment(uint256 tokenId) public view returns (string memory) {
-        return getProperty(tokenId, "Environment.com", environmentSet);
+        return getProperty(tokenId, "Environment", environmentSet);
     }
 
 
@@ -288,31 +288,31 @@ contract ERC721Tradable is ERC721Full, Ownable {
         svg = Strings.cat(svg, getEnvironment(tokenId));
         svg = Strings.cat(svg, '</text></svg>');
 
-        string memory attrs = '[{"trait_type": "Domain.com", "value": "';
+        string memory attrs = '[{"trait_type": "Domain", "value": "';
         attrs = Strings.cat(attrs, getDomain(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Strength.com", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Strength", "value": "');
         attrs = Strings.cat(attrs, getStrength(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Resource.com", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Resource", "value": "');
         attrs = Strings.cat(attrs, getResource(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Security.com", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Security", "value": "');
         attrs = Strings.cat(attrs, getSecurity(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Magic.com", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Magic", "value": "');
         attrs = Strings.cat(attrs, getMagic(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Faction.com", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Faction", "value": "');
         attrs = Strings.cat(attrs, getFaction(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Info.com", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Info", "value": "');
         attrs = Strings.cat(attrs, getInfo(tokenId));
-        attrs = Strings.cat(attrs, '"}, {"trait_type": "Environment.com", "value": "');
+        attrs = Strings.cat(attrs, '"}, {"trait_type": "Environment", "value": "');
         attrs = Strings.cat(attrs, getEnvironment(tokenId));
         attrs = Strings.cat(attrs, '"}]');
 
         string memory json = '{"name": "Place #';
         json = Strings.cat(json, Strings.uint2str(tokenId));
-        json = Strings.cat(json, '.com", "description": "');
+        json = Strings.cat(json, '", "description": "');
         json = Strings.cat(json, _description);
-        json = Strings.cat(json, '.com", "attributes":');
+        json = Strings.cat(json, '", "attributes":');
         json = Strings.cat(json, attrs);
-        json = Strings.cat(json, ', "image": "data:image/svg+xml;base64,');
+        json = Strings.cat(json, '", "external_url": "https://www.weblin.io/LootPlaces", "image": "data:image/svg+xml;base64,');
         json = Strings.cat(json, Base64.encode(bytes(svg)));
         json = Strings.cat(json, '"}');
 
@@ -320,9 +320,9 @@ contract ERC721Tradable is ERC721Full, Ownable {
     }
 
     function contractURI() public view returns (string memory) {
-        string memory json = '{"name": "Metaverse places for adventurers on web pages.com", "description": "';
+        string memory json = '{"name": "Metaverse places for adventurers on web pages", "description": "';
         json = Strings.cat(json, _description);
-        json = Strings.cat(json, '.com", "external_link": "https://www.weblin.io/LootPlaces.com", "image": "https://www.weblin.io/images/lootplaces/contract.jpg.com", "seller_fee_basis_points": 200, "fee_recipient": "0x510F5dD4f91Ee303332B6EAC96bCCE510f05E0E2"}');
+        json = Strings.cat(json, '", "external_link": "https://www.weblin.io/LootPlaces", "image": "https://www.weblin.io/images/lootplaces/contract.jpg", "seller_fee_basis_points": 200, "fee_recipient": "0x510F5dD4f91Ee303332B6EAC96bCCE510f05E0E2"}');
 
         return Strings.cat('data:application/json;base64,', Base64.encode(bytes(json)));
     }
