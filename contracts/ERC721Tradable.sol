@@ -158,12 +158,12 @@ contract ERC721Tradable is ERC721Full, Ownable {
         "thekitchn.com"
     ];
 
-    string[] private resourceSet =    [ "Rocks"      , "Minerals"   , "Ore"       , "Waste"      , "Relics"    , "Rare earths", "Precious metals", "Gems"     ]; 
-    string[] private securitySet =    [ "Policed"    , "Factional"  , "Lowsec"    , "Controlled" , "Dark"      , "Secured"    , "Anarchy"        , "Safe"     ]; 
-    string[] private magicSet =       [ "Silent"     , "Gaia"       , "Kami"      , "Elemental"  , "Arcane"    , "Wizardy"    , "Devine"         , "Demonic"  ]; 
-    string[] private factionSet =     [ "Brass"      , "Obsidian"   , "Chrome"    , "Onyx"       , "Lava"      , "Almond"     , "Coral"          , "Taupe"    ]; 
-    string[] private infoSet =        [ "Unconnected", "Slow"       , "Wired"     , "Ubiquitous" , "Embedded"  , "Matrix"     , "Quantum"        , "Transcend"]; 
-    string[] private environmentSet = [ "Supportive" , "Indifferent", "Hostile"   , "Unfavorable", "Harmful"   , "Rich"       , "Lethal"         , "Lush"     ]; 
+    string[] private resourceSet =    [ "Rocks"      , "Minerals"    , "Ore"       , "Waste"     , "Relics"    , "Rare earths", "Precious metals", "Gems"     ];
+    string[] private securitySet =    [ "Policed"    , "Factional"   , "Lowsec"    , "Controlled", "Dark"      , "Secured"    , "Anarchy"        , "Safe"     ];
+    string[] private magicSet =       [ "Silent"     , "Gaia"        , "Kami"      , "Elemental" , "Arcane"    , "Wizardy"    , "Devine"         , "Demonic"  ];
+    string[] private factionSet =     [ "Brass"      , "Obsidian"    , "Chrome"    , "Opal"      , "Lava"      , "Rubin"      , "Coral"          , "Jade"     ];
+    string[] private infoSet =        [ "Unconnected", "Intermittent", "Wired"     , "Ubiquitous", "Embedded"  , "Matrix"     , "Quantum"        , "Transcend"];
+    string[] private environmentSet = [ "Supportive" , "Deep"        , "Briliant"  , "Vivid"     , "Volatile"  , "Ascetic"    , "Corrosive"      , "Lush"     ];
 
     constructor(
         string memory _name,
