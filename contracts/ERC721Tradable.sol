@@ -163,7 +163,7 @@ contract ERC721Tradable is ERC721Full, Ownable {
     string[] private magicSet =       [ "Silent"     , "Gaia"        , "Kami"      , "Elemental" , "Arcane"    , "Wizardy"    , "Devine"         , "Demonic"  ];
     string[] private factionSet =     [ "Brass"      , "Obsidian"    , "Chrome"    , "Opal"      , "Lava"      , "Rubin"      , "Coral"          , "Jade"     ];
     string[] private infoSet =        [ "Unconnected", "Intermittent", "Wired"     , "Ubiquitous", "Embedded"  , "Matrix"     , "Quantum"        , "Transcend"];
-    string[] private environmentSet = [ "Supportive" , "Deep"        , "Briliant"  , "Vivid"     , "Volatile"  , "Ascetic"    , "Corrosive"      , "Lush"     ];
+    string[] private environmentSet = [ "Supportive" , "Deep"        , "Brilliant" , "Vivid"     , "Volatile"  , "Ascetic"    , "Corrosive"      , "Lush"     ];
 
     constructor(
         string memory _name,
