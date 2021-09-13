@@ -174,18 +174,25 @@ contract ERC721Tradable is ERC721Full, Ownable {
     }
 
 
-    function claim(uint256 tokenId) public  {
-        require(tokenId > 0 && tokenId <= 7200, "Token ID invalid");
+    function claim(uint256 tokenId) public payable {
+        require(msg.value >= 1e18 * 0.01, "0.01 payment required");
+        require(tokenId > 0 && tokenId <= 7840, "Token ID invalid");
         _mint(_msgSender(), tokenId);
     }
 
     function ownerClaim(uint256 tokenId) public onlyOwner {
-        require(tokenId > 7200 && tokenId <= 8000, "Token ID invalid");
-        _safeMint(owner(), tokenId);
+        require(tokenId > 7840 && tokenId <= 8000, "Token ID invalid");
+        _mint(owner(), tokenId);
     }
 
     function random(string memory input) internal pure returns (uint256) {
         return uint256(keccak256(bytes (input)));
+    }
+
+    function withdraw() public onlyOwner {
+        uint bal = address(this).balance;
+        address payable owner =  address(uint160(owner()));
+        owner.transfer(bal);
     }
 
     function getDomain(uint256 tokenId) public view returns (string memory) {
