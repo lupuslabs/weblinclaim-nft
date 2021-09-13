@@ -327,11 +327,7 @@ contract ERC721Tradable is ERC721Full, Ownable {
     }
 
     function contractURI() public view returns (string memory) {
-        string memory json = '{"name": "Metaverse places for adventurers on web pages", "description": "';
-        json = Strings.cat(json, _description);
-        json = Strings.cat(json, '", "external_link": "https://www.weblin.io/LootPlaces", "image": "https://www.weblin.io/images/lootplaces/contract.jpg", "seller_fee_basis_points": 200, "fee_recipient": "0x510F5dD4f91Ee303332B6EAC96bCCE510f05E0E2"}');
-
-        return Strings.cat('data:application/json;base64,', Base64.encode(bytes(json)));
+        return "https://weblin.io/images/lootplaces/contract.json";
     }
 
     /**
