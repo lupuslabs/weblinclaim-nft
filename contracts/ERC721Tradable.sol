@@ -319,7 +319,7 @@ contract ERC721Tradable is ERC721Full, Ownable {
         json = Strings.cat(json, _description);
         json = Strings.cat(json, '", "attributes":');
         json = Strings.cat(json, attrs);
-        json = Strings.cat(json, '", "external_url": "https://www.weblin.io/LootPlaces", "image": "data:image/svg+xml;base64,');
+        json = Strings.cat(json, ', "external_url": "https://www.weblin.io/LootPlaces", "image": "data:image/svg+xml;base64,');
         json = Strings.cat(json, Base64.encode(bytes(svg)));
         json = Strings.cat(json, '"}');
 
