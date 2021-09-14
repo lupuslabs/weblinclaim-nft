@@ -2,15 +2,15 @@ const HDWalletProvider = require("truffle-hdwallet-provider");
 const web3 = require('web3');
 const { config, contract, abi } = require('./LootPlacesContractWalletProvider.js');
 
-const tokenIdStart = 1997;
-const tokenIdCount = 2;
+const tokenIdStart = 3076;
+const tokenIdCount = 24;
 
 const mint = (id, nonce) =>
 {
 
     const txOptions = {
         from: config.ownerAddress,
-        gasPrice: web3.utils.toWei("50", 'gwei'),
+        gasPrice: web3.utils.toWei("60", 'gwei'),
         gas: 200000,
         value: 1e16,
         nonce: nonce,
@@ -44,10 +44,17 @@ const mint = (id, nonce) =>
 
     for (let i = 0; i < tokenIdCount; i++) {
         let tokenId = tokenIdStart + i;
-        mint(tokenId, nonce);
-        nonce++;
 
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        mint(tokenId, nonce);
+
+        let newNonce = 0;
+        do {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            newNonce = await web3Instance.eth.getTransactionCount(config.ownerAddress);
+            //console.log(`nonce=${nonce} newNonce=${newNonce}`);
+        } while (newNonce <= nonce);
+
+        nonce = newNonce;
     }
 
 })();
