@@ -175,7 +175,7 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
 
     function claim(uint256 tokenId) public payable {
-        require(msg.value >= 1e18 * 0.01, "0.01 payment required");
+        require(msg.value >= 1e18 * 0.01, "0.01 nominal fee required");
         require(tokenId > 0 && tokenId <= 7840, "Token ID invalid");
         _mint(_msgSender(), tokenId);
     }
