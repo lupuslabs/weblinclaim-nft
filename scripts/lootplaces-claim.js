@@ -2,8 +2,8 @@ const HDWalletProvider = require("truffle-hdwallet-provider");
 const web3 = require('web3');
 const { config, contract, abi } = require('./LootPlacesContractWalletProvider.js');
 
-const tokenIdStart = 400;
-const tokenIdCount = 100;
+const tokenIdStart = 100;
+const tokenIdCount = 1000;
 
 const mint = (id, nonce) =>
 {
@@ -49,7 +49,7 @@ const mint = (id, nonce) =>
         mint(tokenId, nonce);
         nonce++;
 
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
     }
 
 })();
