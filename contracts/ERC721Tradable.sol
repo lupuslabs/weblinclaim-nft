@@ -326,7 +326,7 @@ contract ERC721Tradable is ERC721Full, Ownable {
         return Strings.cat('data:application/json;base64,', Base64.encode(bytes(json)));
     }
 
-    function contractURI() public view returns (string memory) {
+    function contractURI() public pure returns (string memory) {
         return "https://weblin.io/images/lootplaces/contract.json";
     }
 
