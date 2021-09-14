@@ -160,7 +160,7 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
     string[] private resourceSet =    [ "Rocks"      , "Minerals"    , "Ore"       , "Waste"     , "Relics"    , "Rare earths", "Precious metals", "Gems"     ];
     string[] private securitySet =    [ "Policed"    , "Factional"   , "Lowsec"    , "Controlled", "Dark"      , "Secured"    , "Anarchy"        , "Safe"     ];
-    string[] private magicSet =       [ "Silent"     , "Gaia"        , "Kami"      , "Elemental" , "Arcane"    , "Wizardy"    , "Devine"         , "Demonic"  ];
+    string[] private magicSet =       [ "Silent"     , "Gaia"        , "Kami"      , "Elemental" , "Arcane"    , "Wizardry"   , "Devine"         , "Demonic"  ];
     string[] private factionSet =     [ "Brass"      , "Obsidian"    , "Chrome"    , "Opal"      , "Lava"      , "Rubin"      , "Coral"          , "Jade"     ];
     string[] private infoSet =        [ "Unconnected", "Intermittent", "Wired"     , "Ubiquitous", "Embedded"  , "Matrix"     , "Quantum"        , "Transcend"];
     string[] private environmentSet = [ "Supportive" , "Deep"        , "Brilliant" , "Vivid"     , "Volatile"  , "Ascetic"    , "Corrosive"      , "Lush"     ];
@@ -175,7 +175,7 @@ contract ERC721Tradable is ERC721Full, Ownable {
 
 
     function claim(uint256 tokenId) public payable {
-        require(msg.value >= 1e18 * 0.01, "0.01 nominal fee required");
+        require(msg.value >= 1e18 * 0.005, "0.005 nominal fee for mass minting protection required");
         require(tokenId > 0 && tokenId <= 7840, "Token ID invalid");
         _mint(_msgSender(), tokenId);
     }
