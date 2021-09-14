@@ -2,8 +2,8 @@ const HDWalletProvider = require("truffle-hdwallet-provider");
 const web3 = require('web3');
 const { config, contract, abi } = require('./LootPlacesContractWalletProvider.js');
 
-let startIdx = 354;
-let countIdx = 173;
+let startIdx = 0;
+let countIdx = 2;
 
 (async () =>
 {
