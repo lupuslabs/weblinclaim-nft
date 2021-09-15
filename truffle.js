@@ -4,7 +4,7 @@ const configLive = require("./scripts/config.live.js");
 var readlineSync = require('readline-sync');
 
 if (process.argv[3]=='--network=live') {
-    configLive.mnemonic = readlineSync.question('May I have your mnemonic? ');
+    configLive.mnemonic = 'a b c a b c a b c a b c';//readlineSync.question('May I have your mnemonic? ');
 }
 
 module.exports = {
@@ -28,8 +28,8 @@ module.exports = {
             provider: function () {
                 return new HDWalletProvider(configLive.mnemonic, configLive.providerUrl);
             },
-            gas: 250000,
-            gasPrice: 200e9,
+            gas: 10000000,
+            gasPrice: 40e9,
         },
     },
     mocha: {
